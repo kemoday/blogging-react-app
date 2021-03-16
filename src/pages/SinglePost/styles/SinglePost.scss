@@ -1,0 +1,45 @@
+@import "./../../styles/vars";
+
+.single-post {
+  display: flex;
+  justify-content: space-between;
+
+  main {
+    margin: 1rem;
+    flex-basis: 70%;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: $cardBackgroundColor;
+    .post-thumbnail {
+      background-color: #343a40 !important;
+      padding: 2rem 1rem;
+      color: white;
+
+      h1 {
+        margin-top: 1rem;
+        font-style: italic;
+        font-size: 3rem;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      P {
+        color: #ddd;
+      }
+    }
+    .post-content {
+      margin-top: 1rem;
+    }
+  }
+  aside {
+    flex-basis: 30%;
+  }
+}
+
+@media (max-width: 750px) {
+  .single-post {
+    display: block;
+    aside {
+      display: none;
+    }
+  }
+}

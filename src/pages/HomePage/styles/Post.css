@@ -1,0 +1,54 @@
+.posts {
+  margin: 1rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.posts .post {
+  background-color: white;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 1px solid #ddd;
+  padding: 1rem 0.5rem;
+  padding-bottom: 2rem;
+  border-radius: 8px;
+}
+
+.posts .post:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.posts .post a {
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  outline: none;
+  background-color: #ff4a54;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  -webkit-transition: background-color ease 0.5s 0s;
+  transition: background-color ease 0.5s 0s;
+}
+
+.posts .post a:hover {
+  background-color: gray;
+}
+
+@media (max-width: 750px) {
+  .posts {
+    display: block;
+  }
+  .posts .post {
+    margin: 1rem 0;
+  }
+}
+/*# sourceMappingURL=Post.css.map */

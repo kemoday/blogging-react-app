@@ -1,0 +1,21 @@
+.primary-button {
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  display: block;
+  border-radius: 8px;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+  font-weight: bolder;
+  background-color: #ddd;
+  text-decoration: none;
+  background-color: #ff4a54;
+  outline: none;
+  color: white;
+}
+
+.primary-button:hover {
+  background-color: gray;
+  color: white;
+}
+/*# sourceMappingURL=Button.css.map */

@@ -1,0 +1,44 @@
+@import "./../../styles/vars";
+
+.posts {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  flex-wrap: wrap;
+  .post {
+    background-color: $cardBackgroundColor;
+    transition: 0.5s;
+    &:hover {
+      transform: scale(1.1);
+    }
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid $borderColor;
+    padding: 1rem 0.5rem;
+    padding-bottom: 2rem;
+    border-radius: 8px;
+    a {
+      text-decoration: none;
+      padding: 0.5rem 1.5rem;
+      border: none;
+      outline: none;
+      background-color: $primaryColor;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      transition: background-color ease 0.5s 0s;
+      &:hover {
+        background-color: $primaryHover;
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .posts {
+    display: block;
+    .post {
+      margin: 1rem 0;
+    }
+  }
+}

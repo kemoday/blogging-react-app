@@ -1,0 +1,32 @@
+.offline {
+  background-color: white !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.offline span {
+  font-size: 4rem;
+  color: #ff4a54;
+}
+
+.offline h1 {
+  font-size: 6rem;
+  margin: 0.5rem;
+  color: #ff4a54;
+}
+
+.offline h2 {
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.offline p {
+  text-align: center;
+}
+
+.offline a {
+  margin-top: 1rem;
+}
+/*# sourceMappingURL=NetworkError.css.map */

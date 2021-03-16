@@ -1,0 +1,25 @@
+@import "./../../styles/vars";
+
+.offline {
+  background-color: white !important;
+  flex-direction: column;
+  span {
+    font-size: 4rem;
+    color: $primaryColor;
+  }
+  h1 {
+    font-size: 6rem;
+    margin: 0.5rem;
+    color: $primaryColor;
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  p {
+    text-align: center;
+  }
+  a {
+    margin-top: 1rem;
+  }
+}

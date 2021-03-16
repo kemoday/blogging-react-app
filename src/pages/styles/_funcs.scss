@@ -1,0 +1,13 @@
+@mixin searchBtn() {
+  cursor: pointer;
+  padding: 1.2rem;
+  outline: none;
+  border: none;
+  background-color: $primaryColor;
+  transition-duration: 0.5s;
+  color: white;
+  font-weight: bolder;
+  &:hover {
+    background-color: $primaryHover;
+  }
+}

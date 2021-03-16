@@ -1,0 +1,19 @@
+@import "./../../styles/vars";
+.primary-button {
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  display: block;
+  border-radius: 8px;
+  transition-duration: 0.5s;
+  font-weight: bolder;
+  background-color: $borderColor;
+  text-decoration: none;
+  background-color: $primaryColor;
+  outline: none;
+  color: white;
+  &:hover {
+    background-color: $primaryHover;
+    color: white;
+  }
+}

@@ -1,0 +1,43 @@
+main .hero {
+  background-color: #343a40 !important;
+  padding: 2rem 1rem;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .hero .right,
+main .hero .left {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+}
+
+main .hero .right h1,
+main .hero .left h1 {
+  margin-top: 1rem;
+  font-style: italic;
+  font-size: 3rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+main .hero .right a,
+main .hero .left a {
+  color: white;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+main .hero .right a:hover,
+main .hero .left a:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 750px) {
+  main .hero {
+    display: block;
+  }
+}
+/*# sourceMappingURL=HomePage.css.map */
