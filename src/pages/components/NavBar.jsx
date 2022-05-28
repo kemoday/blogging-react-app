@@ -1,9 +1,44 @@
 import React from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../../context/UserContextProvider";
 import Logo from "./Logo";
 import "./styles/NavBar.css";
 
 export default function NavBar({ toggleSidebar }) {
+  const { user } = useContext(UserContext);
+  const authMenuItems = (
+    <>
+      <li>
+        <NavLink
+          className="item"
+          activeClassName="active"
+          to="/post/dashboard/"
+        >
+          Dashboard
+        </NavLink>
+      </li>
+      <li>
+        <NavLink className="item" activeClassName="active" to="/post/add">
+          Add New
+        </NavLink>
+      </li>
+    </>
+  );
+  const noneAuthMenuItems = (
+    <>
+      <li>
+        <NavLink className="item" activeClassName="active" to="/user/signin">
+          Sign In
+        </NavLink>
+      </li>
+      <li>
+        <NavLink className="item" activeClassName="active" to="/user/signup">
+          Sign Up
+        </NavLink>
+      </li>
+    </>
+  );
   return (
     <nav>
       <Logo />
@@ -18,20 +53,7 @@ export default function NavBar({ toggleSidebar }) {
             Posts
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            className="item"
-            activeClassName="active"
-            to="/post/dashboard/"
-          >
-            Dashboard
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="item" activeClassName="active" to="/post/add">
-            Add New
-          </NavLink>
-        </li>
+        {user ? authMenuItems : noneAuthMenuItems}
       </ul>
       <button
         title="Currently this feature is not working."

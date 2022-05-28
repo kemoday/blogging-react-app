@@ -26,7 +26,7 @@ export default function SinglePost(props) {
           }
         }
       });
-  }, []);
+  }, [id]);
 
   return (
     <>

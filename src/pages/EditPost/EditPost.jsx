@@ -32,8 +32,22 @@ export default function EditPost(props) {
   };
 
   useEffect(() => {
+    const fetchPost = () => {
+      setError(false);
+      Axios.get(`https://blogging-backand.herokuapp.com/post/${id}/`)
+        .then(({ data }) => {
+          setError(false);
+          setPost(data);
+        })
+        .catch((err) => {
+          setError(true);
+        })
+        .finally(() => {
+          setError(true);
+        });
+    };
     fetchPost();
-  }, []);
+  }, [id]);
 
   const handlePostUpdate = (event) => {
     setLoading(true);

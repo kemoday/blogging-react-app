@@ -76,9 +76,9 @@ export default function Dashboard() {
                   <li className="fa fa-eye"></li>
                   <span> {post.views}</span>
                 </Link>
-                <a onClick={() => deletePost(post._id)} href="#">
+                <button onClick={() => deletePost(post._id)} href="#">
                   <li className="fa fa-trash"></li>
-                </a>
+                </button>
               </div>
             </div>
           ))

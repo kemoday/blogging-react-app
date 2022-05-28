@@ -39,7 +39,9 @@
         list-style: none;
         a {
           display: block;
-          padding: 0.25rem 0;
+          padding: 1rem 0;
+          padding-right: 0.5rem;
+          border-bottom: 1px solid #ddd;
           text-decoration: none;
           color: white;
           font-weight: 800;
@@ -56,6 +58,12 @@
 
 @media (max-width: 750px) {
   .sidebar {
-    width: 90vw;
+    width: 50vw;
+  }
+}
+@media (min-width: 750px) {
+  .sidebar,
+  .shadow {
+    display: none;
   }
 }
