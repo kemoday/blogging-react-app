@@ -1,11 +1,14 @@
 import React from "react";
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import { signout } from "../../apis/users";
 import { UserContext } from "../../context/UserContextProvider";
 import "./styles/Sidebar.css";
 
 export default function Sidebar({ toggleSidebar }) {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  const history = useHistory();
+
   const authMenuItems = (
     <>
       <li>
@@ -13,7 +16,7 @@ export default function Sidebar({ toggleSidebar }) {
           className="item"
           onClick={toggleSidebar}
           activeClassName="active"
-          to="/post/dashboard/"
+          to="/user/dashboard/"
         >
           Dashboard
         </NavLink>
@@ -28,6 +31,19 @@ export default function Sidebar({ toggleSidebar }) {
           Add New
         </NavLink>
       </li>
+      <li>
+        <button
+          onClick={() => {
+            signout().then(() => {
+              setUser(null);
+              history.push("/user/signin");
+            });
+          }}
+          className="item"
+        >
+          Signout
+        </button>
+      </li>
     </>
   );
   const noneAuthMenuItems = (
@@ -37,7 +53,7 @@ export default function Sidebar({ toggleSidebar }) {
           className="item"
           onClick={toggleSidebar}
           activeClassName="active"
-          to="user/signin"
+          to="/user/signin"
         >
           Sign In
         </NavLink>
@@ -47,7 +63,7 @@ export default function Sidebar({ toggleSidebar }) {
           className="item"
           onClick={toggleSidebar}
           activeClassName="active"
-          to="user/signup"
+          to="/user/signup"
         >
           Sign Up
         </NavLink>

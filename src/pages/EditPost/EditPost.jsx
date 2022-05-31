@@ -60,7 +60,7 @@ export default function EditPost(props) {
 
     Axios.put(`https://blogging-backand.herokuapp.com/post/${id}/`, post)
       .then((res) => {
-        props.history.push("/post/dashboard/");
+        props.history.push("/user/dashboard/");
         setLoading(false);
       })
       .catch((err) => {
@@ -114,7 +114,7 @@ export default function EditPost(props) {
                 ) : (
                   <Button action={() => {}} text="Update" />
                 )}
-                <Link to="/post/dashboard/">Cancel</Link>
+                <Link to="/user/dashboard/">Cancel</Link>
               </div>
             </form>
           </div>

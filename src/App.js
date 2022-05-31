@@ -3,7 +3,7 @@ import "./index.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./pages/components/NavBar";
-import PostPaths from "./pages/PostPaths";
+import PostsPaths from "./pages/PostsPaths";
 import UserPaths from "./pages/UserPaths";
 import HomePage from "./pages/HomePage/HomePage";
 import PageNotFound from "./pages/components/PageNotFound";
@@ -16,7 +16,7 @@ import { useContext } from "react";
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
-  const { setUser } = useContext(UserContext);
+  const { setUser, user } = useContext(UserContext);
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -26,8 +26,12 @@ const App = () => {
     const getUserData = async () => {
       try {
         const user = await userInfo();
-        setUser(user);
-      } catch (error) {}
+        if (user !== "you are not sigen in.") {
+          setUser(user);
+        } else setUser(null);
+      } catch (error) {
+        user && setUser(null);
+      }
     };
     getUserData();
   }, [setUser]);
@@ -37,7 +41,7 @@ const App = () => {
       {showSidebar && <Sidebar toggleSidebar={toggleSidebar} />}
       <NavBar toggleSidebar={toggleSidebar} />
       <Switch>
-        <Route path="/post" component={PostPaths} />
+        <Route path="/posts" component={PostsPaths} />;
         <Route path="/user" component={UserPaths} />
         <Route exact path="/blogging-react-app/" component={HomePage} />
         <Route exact path="/" component={HomePage} />

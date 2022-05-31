@@ -8,7 +8,7 @@ export default function Post({ postData }) {
       <div className="post">
         <h2>{postData.title}</h2>
         <p>{postData.summary}</p>
-        <Link to={`/post/${postData._id}`}>More..</Link>
+        <Link to={`/posts/${postData._id}`}>More..</Link>
       </div>
     </div>
   );

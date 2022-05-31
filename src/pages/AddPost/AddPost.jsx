@@ -2,40 +2,48 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles/AddPost.css";
 import Loader from "react-loader-spinner";
-import Axios from "axios";
 import Button from "../components/Button";
+import { UserContext } from "../../context/UserContextProvider";
+import { useContext } from "react";
+import { addPost } from "../../apis/posts";
+import { PostsContext } from "../../context/PostsContextProvider";
 
 export default function AddPost({ history }) {
   document.title = "BLOGGING - Add new post";
   const [loading, setLoading] = useState(false);
+  const { user } = useContext(UserContext);
+  const { setPosts, posts } = useContext(PostsContext);
 
-  const handleNewPost = (event) => {
+  const handleNewPost = async (event) => {
     setLoading(true);
     event.preventDefault();
     const post = {
+      arthur: user._id,
       title: event.target.title.value,
       content: event.target.content.value,
       summary: event.target.summary.value,
       views: 0,
     };
 
-    Axios.post("https://blogging-backand.herokuapp.com/post/", post)
-      .then((res) => {
-        event.target.title.value = "";
-        event.target.content.value = "";
-        event.target.summary.value = "";
-        history.push("/post/dashboard/");
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
-        alert("NetWork Error,please try again");
-      });
+    try {
+      const result = await addPost(post);
+      console.log("result", result);
+      posts.unshift(result);
+      setPosts(posts);
+      event.target.title.value = "";
+      event.target.content.value = "";
+      event.target.summary.value = "";
+      history.push("/user/dashboard/");
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      alert("NetWork Error,please try again");
+    }
   };
   return (
     <div className="add-new-post">
       <div className="form-wrapper">
-        <h1>Add new post</h1>
+        <h1 className="text-2xl font-bold mb-2">Add new post</h1>
         <hr />
         <form onSubmit={handleNewPost}>
           <label htmlFor="title">Post Title</label>
@@ -56,7 +64,7 @@ export default function AddPost({ history }) {
             ) : (
               <Button action={() => {}} text="Publish" />
             )}
-            <Link to="/post/dashboard/">Cancel</Link>
+            <Link to="/user/dashboard/">Cancel</Link>
           </div>
         </form>
       </div>

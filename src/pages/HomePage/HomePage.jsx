@@ -1,6 +1,6 @@
-import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { loadAllPosts } from "../../apis/posts";
 import LoadingScreen from "../components/LoadingScreen";
 import NetworkError from "../components/NetworkError";
 import Post from "./components/Post";
@@ -11,19 +11,15 @@ export default function HomePage() {
   const [posts, setPosts] = useState(null);
   const [Error, setError] = useState(false);
 
-  const fetchPost = () => {
-    setError(false);
-    Axios.get(`https://blogging-backand.herokuapp.com/post/`)
-      .then(({ data }) => {
-        setError(false);
-        setPosts(data);
-      })
-      .catch((err) => {
-        setError(true);
-      })
-      .finally(() => {
-        setError(true);
-      });
+  const fetchPost = async () => {
+    try {
+      const data = await loadAllPosts();
+      setPosts(data);
+      setError(false);
+      setPosts(data);
+    } catch (error) {
+      setError(true);
+    }
   };
 
   useEffect(() => {

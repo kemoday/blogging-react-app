@@ -3,12 +3,12 @@ import "./styles/AddPost.css";
 import Loader from "react-loader-spinner";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
-import { signup } from "../../apis/users";
+import { signin } from "../../apis/users";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContextProvider";
 
-export default function SignUp({ history }) {
-  document.title = "BLOGGING - SignUp";
+export default function SignIn({ history }) {
+  document.title = "BLOGGING - SignIn";
 
   const { setUser } = useContext(UserContext);
 
@@ -16,7 +16,6 @@ export default function SignUp({ history }) {
   const [error, setError] = useState(null);
 
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -25,7 +24,7 @@ export default function SignUp({ history }) {
     setLoading(true);
     setError(null);
     event.preventDefault();
-    signup(formData)
+    signin(formData)
       .then((user) => {
         setUser(user);
         setLoading(false);
@@ -43,22 +42,11 @@ export default function SignUp({ history }) {
   };
 
   return (
-    <div className="signup">
+    <div className="signin">
       <div className="form-wrapper">
-        <h1 className="text-2xl font-bold mb-2">Sign up for new account</h1>
+        <h1 className="text-2xl font-bold mb-2">Sign In to your account</h1>
         <hr />
         <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            onChange={handleChange}
-            value={formData.name}
-            required
-            maxLength={60}
-            type="text"
-            name="name"
-            id="name"
-          />
-
           <label htmlFor="email">Email</label>
           <input
             onChange={handleChange}
@@ -89,11 +77,11 @@ export default function SignUp({ history }) {
             )}
           </div>
           <div>
-            already have an account?{" "}
-            <Link className="font-bold hover:underline" to="/user/signin">
-              Sign in
+            don't have an account?{" "}
+            <Link className="font-bold hover:underline" to="/user/signup">
+              Sign Up
             </Link>{" "}
-            instead.
+            now.
           </div>
           {error && (
             <p className="box-border rounded px-4 py-2 shadow-sm border-2 text-red-400 font-bold bg-red-200">

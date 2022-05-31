@@ -5,7 +5,7 @@ const apiUrl = "http://localhost:8080";
 
 export const userInfo = async () => {
   try {
-    const { data } = await Axios.get(`${apiUrl}/user/account/info/`, {
+    const { data } = await Axios.get(`${apiUrl}/user/account/info`, {
       withCredentials: true,
     });
     return data;
@@ -38,5 +38,16 @@ export const signin = async (user) => {
     } catch (error) {
       throw error;
     }
+  }
+};
+
+export const signout = async () => {
+  try {
+    const res = await Axios.get(`${apiUrl}/user/account/signout`, {
+      withCredentials: true,
+    });
+    return res;
+  } catch (error) {
+    throw error;
   }
 };

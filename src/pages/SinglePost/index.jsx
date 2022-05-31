@@ -1,5 +1,5 @@
-import Axios from "axios";
 import React, { useEffect, useState } from "react";
+import { loadPost } from "../../apis/posts";
 import LoadingScreen from "../components/LoadingScreen";
 import PageNotFound from "../components/PageNotFound";
 import Post from "../HomePage/components/Post";
@@ -13,19 +13,18 @@ export default function SinglePost(props) {
 
   const id = props.match.params.id;
 
+  const fetchPost = async () => {
+    try {
+      const data = await loadPost(id);
+      setPost(data);
+      setError(false);
+    } catch (error) {
+      setError(true);
+    }
+  };
+
   useEffect(() => {
-    Axios.get(`https://blogging-backand.herokuapp.com/post/${id}/`)
-      .then(({ data }) => {
-        setPost(data);
-      })
-      .catch((err) => {
-        if (err.response) {
-          if (err.response.status === 404) {
-            setPost(0);
-            setError(true);
-          }
-        }
-      });
+    fetchPost();
   }, [id]);
 
   return (

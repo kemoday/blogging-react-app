@@ -1,4 +1,4 @@
-.signup .form-wrapper {
+.signin .form-wrapper {
   width: 60%;
   margin: 1rem;
   background-color: white;
@@ -9,7 +9,7 @@
   border-radius: 8px;
 }
 
-.signup .form-wrapper form {
+.signin .form-wrapper form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,8 +19,8 @@
           flex-direction: column;
 }
 
-.signup .form-wrapper form input,
-.signup .form-wrapper form label {
+.signin .form-wrapper form input,
+.signin .form-wrapper form label {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -28,12 +28,12 @@
   border: none;
 }
 
-.signup .form-wrapper form label {
+.signin .form-wrapper form label {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin: 0.5rem 0;
 }
 
-.signup .form-wrapper form input {
+.signin .form-wrapper form input {
   padding: 0.5rem 1rem;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -42,11 +42,11 @@
   outline-color: gray;
 }
 
-.signup .form-wrapper form input:focus {
+.signin .form-wrapper form input:focus {
   outline-color: #ff4a54;
 }
 
-.signup .form-wrapper form .publish-btns {
+.signin .form-wrapper form .publish-btns {
   padding: 1rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -56,9 +56,9 @@
           justify-content: space-between;
 }
 
-.signup .form-wrapper form .publish-btns button,
-.signup .form-wrapper form .publish-btns div,
-.signup .form-wrapper form .publish-btns a {
+.signin .form-wrapper form .publish-btns button,
+.signin .form-wrapper form .publish-btns div,
+.signin .form-wrapper form .publish-btns a {
   border: none;
   cursor: pointer;
   padding: 0.5rem 2rem;
@@ -72,19 +72,19 @@
   color: black;
 }
 
-.signup .form-wrapper form .publish-btns button:hover,
-.signup .form-wrapper form .publish-btns div:hover,
-.signup .form-wrapper form .publish-btns a:hover {
+.signin .form-wrapper form .publish-btns button:hover,
+.signin .form-wrapper form .publish-btns div:hover,
+.signin .form-wrapper form .publish-btns a:hover {
   background-color: gray;
   color: white;
 }
 
-.signup .form-wrapper form .publish-btns :first-child {
+.signin .form-wrapper form .publish-btns :first-child {
   color: white;
   background-color: #ff4a54;
 }
 
-.signup .form-wrapper form .publish-btns div {
+.signin .form-wrapper form .publish-btns div {
   background-color: #ff4a54;
   padding-right: 2.7rem;
   padding-left: 2.7rem;

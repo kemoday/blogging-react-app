@@ -1,27 +1,22 @@
-import Axios from "axios";
 import React, { useEffect, useState } from "react";
+import { loadAllPosts } from "../../apis/posts";
 import LoadingScreen from "../components/LoadingScreen";
 import NetworkError from "../components/NetworkError";
 import NoPostFound from "../components/NoPostFound";
 import Post from "../HomePage/components/Post";
 
-export default function PostPage() {
+export default function PostsPage() {
   const [posts, setPosts] = useState(null);
   const [Error, setError] = useState(false);
 
-  const fetchPost = () => {
-    setError(false);
-    Axios.get(`https://blogging-backand.herokuapp.com/post/`)
-      .then(({ data }) => {
-        setError(false);
-        setPosts(data.reverse());
-      })
-      .catch((err) => {
-        setError(true);
-      })
-      .finally(() => {
-        setError(true);
-      });
+  const fetchPost = async () => {
+    try {
+      const data = await loadAllPosts();
+      setPosts(data);
+      setError(false);
+    } catch (error) {
+      setError(true);
+    }
   };
 
   useEffect(() => {

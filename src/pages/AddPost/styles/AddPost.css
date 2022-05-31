@@ -1,11 +1,4 @@
 .add-new-post {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  justify-items: center;
   width: 100vw;
   height: 90vh;
 }

@@ -1,27 +1,43 @@
 import React from "react";
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import { signout } from "../../apis/users";
 import { UserContext } from "../../context/UserContextProvider";
 import Logo from "./Logo";
 import "./styles/NavBar.css";
 
 export default function NavBar({ toggleSidebar }) {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  const history = useHistory();
+
   const authMenuItems = (
     <>
       <li>
         <NavLink
           className="item"
           activeClassName="active"
-          to="/post/dashboard/"
+          to={`/user/dashboard/`}
         >
           Dashboard
         </NavLink>
       </li>
       <li>
-        <NavLink className="item" activeClassName="active" to="/post/add">
+        <NavLink className="item" activeClassName="active" to="/posts/add">
           Add New
         </NavLink>
+      </li>
+      <li>
+        <button
+          onClick={() => {
+            signout().then(() => {
+              setUser(null);
+              history.push("/user/signin");
+            });
+          }}
+          className="item"
+        >
+          Signout
+        </button>
       </li>
     </>
   );
@@ -49,7 +65,7 @@ export default function NavBar({ toggleSidebar }) {
           </NavLink>
         </li>
         <li>
-          <NavLink className="item" exact activeClassName="active" to="/post/">
+          <NavLink className="item" exact activeClassName="active" to="/posts/">
             Posts
           </NavLink>
         </li>
