@@ -47,7 +47,14 @@ export default function AddPost({ history }) {
         <hr />
         <form onSubmit={handleNewPost}>
           <label htmlFor="title">Post Title</label>
-          <input required maxLength={60} type="text" name="title" id="title" />
+          <input
+            autoFocus
+            required
+            maxLength={60}
+            type="text"
+            name="title"
+            id="title"
+          />
           <label htmlFor="content">Post Content</label>
           <textarea required rows="8" type="text" name="content" id="content" />
           <label htmlFor="summary">Post summary</label>

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { loadAllPosts } from "../../apis/posts";
+import { PostsContext } from "../../context/PostsContextProvider";
 import LoadingScreen from "../components/LoadingScreen";
 import NetworkError from "../components/NetworkError";
 import NoPostFound from "../components/NoPostFound";
 import Post from "../HomePage/components/Post";
 
 export default function PostsPage() {
-  const [posts, setPosts] = useState(null);
+  const { posts, setPosts } = useContext(PostsContext);
   const [Error, setError] = useState(false);
 
   const fetchPost = async () => {
@@ -20,7 +22,9 @@ export default function PostsPage() {
   };
 
   useEffect(() => {
-    fetchPost();
+    if (posts.length === 0) {
+      fetchPost();
+    }
   }, []);
 
   return (

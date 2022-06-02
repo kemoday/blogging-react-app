@@ -12,6 +12,7 @@ import { useState } from "react";
 import { userInfo } from "./apis/users";
 import { UserContext } from "./context/UserContextProvider";
 import { useContext } from "react";
+import PostsContextProvider from "./context/PostsContextProvider";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -40,13 +41,15 @@ const App = () => {
     <Router>
       {showSidebar && <Sidebar toggleSidebar={toggleSidebar} />}
       <NavBar toggleSidebar={toggleSidebar} />
-      <Switch>
-        <Route path="/posts" component={PostsPaths} />;
-        <Route path="/user" component={UserPaths} />
-        <Route exact path="/blogging-react-app/" component={HomePage} />
-        <Route exact path="/" component={HomePage} />
-        <Route component={PageNotFound} />
-      </Switch>
+      <PostsContextProvider>
+        <Switch>
+          <Route path="/posts/" component={PostsPaths} />;
+          <Route path="/user/" component={UserPaths} />
+          <Route exact path="/blogging-react-app/" component={HomePage} />
+          <Route exact path="/" component={HomePage} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </PostsContextProvider>
     </Router>
   );
 };

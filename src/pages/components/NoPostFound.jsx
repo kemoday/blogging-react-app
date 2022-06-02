@@ -9,7 +9,7 @@ export default function NoPostFound(props) {
       <div className="loading-screen offline">
         <span className="fa fa-search"></span>
         <h2>No Post Found!</h2>
-        <Link className="primary-button" to="/post/add/">
+        <Link className="primary-button" to="/posts/add/">
           <li className="fa fa-pluse"></li> Add New Post
         </Link>
       </div>

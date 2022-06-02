@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { loadPost } from "../../apis/posts";
+import { PostsContext } from "../../context/PostsContextProvider";
 import LoadingScreen from "../components/LoadingScreen";
 import PageNotFound from "../components/PageNotFound";
 import Post from "../HomePage/components/Post";
@@ -10,22 +12,29 @@ export default function SinglePost(props) {
 
   const [post, setPost] = useState(null);
   const [Error, setError] = useState(false);
+  const { posts } = useContext(PostsContext);
 
   const id = props.match.params.id;
 
-  const fetchPost = async () => {
-    try {
-      const data = await loadPost(id);
-      setPost(data);
-      setError(false);
-    } catch (error) {
-      setError(true);
-    }
-  };
-
   useEffect(() => {
+    const fetchPost = async () => {
+      console.log(id);
+      if (posts.lenght > 0) {
+        const p = posts.find((item) => item._id === id);
+        setPost(p);
+        setError(false);
+      } else {
+        try {
+          const data = await loadPost(id);
+          setPost(data);
+          setError(false);
+        } catch (error) {
+          setError(true);
+        }
+      }
+    };
     fetchPost();
-  }, [id]);
+  }, []);
 
   return (
     <>

@@ -8,7 +8,7 @@ export default function PageNotFound(props) {
       <div className="loading-screen offline">
         <h1>404</h1>
         <h2>Page Not Found!</h2>
-        <Link className="primary-button" to="/post/">
+        <Link className="primary-button" to="/posts/">
           <li className="fa fa-pluse"></li> Go Posts Page
         </Link>
       </div>

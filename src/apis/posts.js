@@ -18,7 +18,6 @@ export const addPost = async (post) => {
 export const loadPosts = async (id) => {
   try {
     const { data } = await Axios.get(`${apiUrl}/user/posts/user/${id}`);
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -29,7 +28,27 @@ export const loadPosts = async (id) => {
 export const loadPost = async (id) => {
   try {
     const { data } = await Axios.get(`${apiUrl}/user/posts/${id}`);
-    return data[0];
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export const loadPostToEdit = async (id) => {
+  try {
+    const { data } = await Axios.get(`${apiUrl}/user/posts/edit/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export const removePost = async (id) => {
+  try {
+    const { data } = await Axios.delete(`${apiUrl}/user/posts/${id}`);
+    return data;
   } catch (error) {
     console.log(error);
     throw error;
