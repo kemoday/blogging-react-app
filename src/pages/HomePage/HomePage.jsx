@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { loadAllPosts } from "../../apis/posts";
+import { PostsContext } from "../../context/PostsContextProvider";
 import LoadingScreen from "../components/LoadingScreen";
 import NetworkError from "../components/NetworkError";
 import Post from "./components/Post";
@@ -8,7 +10,7 @@ import "./styles/HomePage.css";
 
 export default function HomePage() {
   document.title = "BLOGGING - Home Page";
-  const [posts, setPosts] = useState(null);
+  const { posts, setPosts } = useContext(PostsContext);
   const [Error, setError] = useState(false);
 
   const fetchPost = async () => {
@@ -23,7 +25,9 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    fetchPost();
+    if (posts.length === 0) {
+      fetchPost();
+    }
   }, []);
 
   return (
