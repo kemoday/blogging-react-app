@@ -20,11 +20,7 @@ you don't have to signup there is an example user you can use to sign in to the 
 ![alt text](https://raw.githubusercontent.com/kemoday/polls-react-app/main/images/2.png)
 ### Dashboard
 ![alt text](https://raw.githubusercontent.com/kemoday/polls-react-app/main/images/3.png)
-### Vote Page
-![alt text](https://raw.githubusercontent.com/kemoday/polls-react-app/main/images/6.png)
-### Thank You Page
-![alt text](https://raw.githubusercontent.com/kemoday/polls-react-app/main/images/7.png)
-### 404 Page
-![alt text](https://raw.githubusercontent.com/kemoday/polls-react-app/main/images/4.png)
+### Add Post 2
+![alt text](https://github.com/kemoday/blogging-react-app/blob/main/screenshots/9.png?raw=true)
 ### Network Error Page
-![alt text](https://raw.githubusercontent.com/kemoday/polls-react-app/main/images/5.png)
+![alt text](https://github.com/kemoday/blogging-react-app/blob/main/screenshots/10.png?raw=true)
