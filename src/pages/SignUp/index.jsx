@@ -54,6 +54,7 @@ export default function SignUp({ history }) {
             value={formData.name}
             required
             maxLength={60}
+            minLength={5}
             type="text"
             name="name"
             id="name"

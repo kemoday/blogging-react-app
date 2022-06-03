@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useCallback } from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { loadAllPosts } from "../../apis/posts";
@@ -13,22 +14,21 @@ export default function HomePage() {
   const { posts, setPosts } = useContext(PostsContext);
   const [Error, setError] = useState(false);
 
-  const fetchPost = async () => {
+  const fetchPost = useCallback(async () => {
     try {
       const data = await loadAllPosts();
       setPosts(data);
       setError(false);
-      setPosts(data);
     } catch (error) {
       setError(true);
     }
-  };
+  }, [setPosts]);
 
   useEffect(() => {
     if (posts.length === 0) {
       fetchPost();
     }
-  }, []);
+  }, [fetchPost, posts.length]);
 
   return (
     <>
@@ -37,14 +37,14 @@ export default function HomePage() {
           <main>
             <div className="hero">
               <div className="left">
-                <h1>Start adding you blog post for free</h1>
+                <h1>Start adding your blog post for free</h1>
                 <p>
                   start immediately posting on our platform without any signup
                   or account just click the link below to post your first free
                   post, Yes completely for free our service is free and it
                   always will be free.
                 </p>
-                <Link to="/post/add/ ">Write my first post...</Link>
+                <Link to="/posts/add/ ">Write my first post...</Link>
               </div>
               <div className="right"></div>
             </div>

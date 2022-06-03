@@ -1,4 +1,3 @@
-import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles/style.css";
@@ -9,7 +8,7 @@ import { loadPosts, removePost } from "../../apis/posts";
 import { UserContext } from "../../context/UserContextProvider";
 import { useContext } from "react";
 import { PostsContext } from "../../context/PostsContextProvider";
-import LoadingScreen from "../components/LoadingScreen";
+import { useCallback } from "react";
 
 export default function Dashboard() {
   document.title = "BLOGGING - Dashboard";
@@ -29,7 +28,7 @@ export default function Dashboard() {
     }
   };
 
-  const fetchPost = async () => {
+  const fetchPost = useCallback(async () => {
     try {
       const data = await loadPosts(user._id);
       setPosts(data.reverse());
@@ -39,17 +38,16 @@ export default function Dashboard() {
       setLoading(false);
       setError(true);
     }
-  };
+  }, [user._id, setPosts]);
 
   useEffect(() => {
     let isMounted = true;
-
     setLoading(false);
-    if (posts.length === 0) fetchPost();
+    if (posts.length === 0 && isMounted) fetchPost();
     return () => {
       isMounted = false;
     };
-  }, [user]);
+  }, [user, setPosts, posts.length, fetchPost]);
 
   const reducer = (accumulator, currentValue) =>
     accumulator + currentValue.views;
@@ -71,7 +69,7 @@ export default function Dashboard() {
       {loading ? (
         <SmallLoading />
       ) : Error ? (
-        <NetworkError />
+        <NetworkError fetchPost={fetchPost} />
       ) : posts.length === 0 ? (
         <NoPostFound />
       ) : (

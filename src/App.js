@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./pages/components/NavBar";
 import PostsPaths from "./pages/PostsPaths";
 import UserPaths from "./pages/UserPaths";
-import HomePage from "./pages/HomePage/HomePage";
+import HomePage from "./pages/HomePage";
 import PageNotFound from "./pages/components/PageNotFound";
 import Sidebar from "./pages/components/Sidebar";
 import { useState } from "react";
@@ -35,7 +35,7 @@ const App = () => {
       }
     };
     getUserData();
-  }, [setUser]);
+  }, [user, setUser]);
 
   return (
     <Router>

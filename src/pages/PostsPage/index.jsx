@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useCallback } from "react";
 import { useContext } from "react";
 import { loadAllPosts } from "../../apis/posts";
 import { PostsContext } from "../../context/PostsContextProvider";
@@ -11,7 +12,7 @@ export default function PostsPage() {
   const { posts, setPosts } = useContext(PostsContext);
   const [Error, setError] = useState(false);
 
-  const fetchPost = async () => {
+  const fetchPost = useCallback(async () => {
     try {
       const data = await loadAllPosts();
       setPosts(data);
@@ -19,13 +20,13 @@ export default function PostsPage() {
     } catch (error) {
       setError(true);
     }
-  };
+  }, [setPosts]);
 
   useEffect(() => {
     if (posts.length === 0) {
       fetchPost();
     }
-  }, []);
+  }, [fetchPost, posts.length]);
 
   return (
     <>

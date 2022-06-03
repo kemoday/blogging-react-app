@@ -34,7 +34,7 @@ export default function SinglePost(props) {
       }
     };
     fetchPost();
-  }, []);
+  }, [id, posts]);
 
   return (
     <>
