@@ -14,12 +14,17 @@ this web app is a simple blog, this app was created to be mobile responsive.
 * Jsonwebtoken (JSON Web Token is an open, industry standard RFC 7519 method for representing claims securely between two parties)
 ## Pages
 ### Home Page
-![alt text](https://raw.githubusercontent.com/kemoday/polls-react-app/main/images/1.png)
+![alt text](https://github.com/kemoday/blogging-react-app/blob/main/screenshots/6.png?raw=true)
 ### Registration Page
-you don't have to signup there is an example user you can use to sign in to the app
-![alt text](https://raw.githubusercontent.com/kemoday/polls-react-app/main/images/2.png)
+![alt text](https://github.com/kemoday/blogging-react-app/blob/main/screenshots/1.png?raw=true)
 ### Dashboard
-![alt text](https://raw.githubusercontent.com/kemoday/polls-react-app/main/images/3.png)
+![alt text](https://github.com/kemoday/blogging-react-app/blob/main/screenshots/4.png?raw=true)
+### Add Page
+![alt text](https://github.com/kemoday/blogging-react-app/blob/main/screenshots/2.png?raw=true)
+### Post Page
+![alt text](https://raw.githubusercontent.com/kemoday/blogging-react-app/main/screenshots/3.png)
+### Posts Page
+![alt text](https://github.com/kemoday/blogging-react-app/blob/main/screenshots/5.png?raw=true)
 ### Add Post 2
 ![alt text](https://github.com/kemoday/blogging-react-app/blob/main/screenshots/9.png?raw=true)
 ### Network Error Page
